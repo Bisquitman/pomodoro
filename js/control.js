@@ -1,3 +1,4 @@
+import { stopAlarm } from './alarm.js';
 import { state } from './state.js';
 import { showTime, startTimer } from './timer.js';
 
@@ -6,6 +7,8 @@ const btnStop = document.querySelector('.control__btn_stop');
 const navigationBtns = document.querySelectorAll('.navigation__btn');
 
 export const changeActiveBtn = (dataUse) => {
+  state.status = dataUse;
+
   for (let i = 0; i < navigationBtns.length; i++) {
     if (navigationBtns[i].dataset.use === dataUse) {
       navigationBtns[i].classList.add('navigation__btn_active');
@@ -18,6 +21,7 @@ export const changeActiveBtn = (dataUse) => {
 const stop = () => {
   clearTimeout(state.timerId);
   state.isActive = false;
+  stopAlarm();
   btnStart.textContent = 'Старт';
   state.timeLeft = state[state.status] * 60;
   showTime(state.timeLeft);
@@ -37,5 +41,13 @@ export const initControl = () => {
   });
 
   btnStop.addEventListener('click', stop);
+
+  for (let i = 0; i < navigationBtns.length; i++) {
+    navigationBtns[i].addEventListener('click', (e) => {
+      changeActiveBtn(navigationBtns[i].dataset.use);
+      stop();
+    });
+  }
+
   showTime(state.timeLeft);
 };

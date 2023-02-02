@@ -172,8 +172,9 @@ iframe {
   padding-left: 24px;
 }
 
-.todo__item {
+.todo__item:not(:last-child) {
   font-size: 14px;
+  margin-bottom: 4px;
 }
 
 .todo__item-wrapper {
