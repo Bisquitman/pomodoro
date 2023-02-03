@@ -3,7 +3,7 @@ import { state } from './state.js';
 import { initTodo } from './todo.js';
 
 const initPomodoro = ({workTime, breakTime, relaxTime} = {}) => {
-  // initControl();
+  initControl();
   initTodo();
 
   state.work = workTime ?? state.work;

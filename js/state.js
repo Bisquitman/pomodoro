@@ -1,6 +1,6 @@
-const WORK_TIME = 3; // Время работы в минутах.
-const BREAK_TIME = 1; // Время перерыва в минутах.
-const RELAX_TIME = 2; // Время большого перерыва в минутах.
+const WORK_TIME = 25; // Время работы в минутах. // 25
+const BREAK_TIME = 5; // Время перерыва в минутах.  // 5
+const RELAX_TIME = 20; // Время большого перерыва в минутах. // 20
 
 export const state = {
   work: WORK_TIME,
